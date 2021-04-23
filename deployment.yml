@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerapi
+spec:
+  selector:
+    matchLabels:
+      app: dockerapi-pod
+  template:
+    metadata:
+      labels:
+        app: dockerapi-pod
+    spec:
+      containers:
+      - name: dockerapi-container
+        image: yanpershay/dockerapi:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
